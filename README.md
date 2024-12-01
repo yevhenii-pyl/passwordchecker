@@ -46,3 +46,6 @@ Replace <file_path> with the path to your text file containing passwords.
 ## Notes
 - **Security**: Passwords are hashed locally using SHA-1, and only the first 5 characters of the hash are sent to the API, ensuring privacy.
 - **Rate Limits**: Be mindful of the API's rate limits and use the script responsibly.
+- **urllib3**: There may be a problem with openSSL and new version of urllib, thread: https://stackoverflow.com/questions/76187256/importerror-urllib3-v2-0-only-supports-openssl-1-1-1-currently-the-ssl-modu
+
+Best fix: use PyCharm :) 
