@@ -19,7 +19,7 @@ This script checks if passwords have been exposed in data breaches by using the 
 Install the required Python packages:
 
 ```bash
-pip install requests
+poetry install
 ```
 
 ---
