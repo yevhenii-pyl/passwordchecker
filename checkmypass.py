@@ -2,13 +2,18 @@ import requests
 import hashlib
 import sys
 
+# Request data from the "Have I Been Pwned" API
 def request_api_data(query):
+    # The URL is formed using the first 5 characters of the SHA1 hash.
     url = 'https://api.pwnedpasswords.com/range/' + query
+
     res = requests.get(url)
+
     if res.status_code != 200:
         raise RuntimeError(f'Error fetching: {res.status_code}')
     return res
 
+# Get the count of how many times a password hash was leaked
 def get_password_leaks_count(hashes, hash_to_check):
     hashes = (line.split(':') for line in hashes.text.splitlines())
 
@@ -18,6 +23,7 @@ def get_password_leaks_count(hashes, hash_to_check):
     return 0
 
 def pwned_api_check(password):
+    # Hash the password using SHA-1 and convert it to uppercase hexadecimal
     sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
     first5_char, tail = sha1password[:5], sha1password[5:]
 
